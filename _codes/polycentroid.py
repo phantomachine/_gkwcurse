@@ -1,5 +1,8 @@
 import numpy
 
+# Original source: Paul Burke, Calculating the area and centroid of a polygon
+# http://paulbourke.net/geometry/polygonmesh/
+
 def calculate_polygon_area(polygon, signed=False):
     """Calculate the signed area of non-self-intersecting polygon
 
