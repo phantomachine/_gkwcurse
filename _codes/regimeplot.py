@@ -18,18 +18,18 @@ from mpl_toolkits.axes_grid.axislines import Subplot
 
 # Change filename to suit experiment's name each time!
 
-filename = 'baseline'
+filename = 'PiF-hi'
 
 # Parameters
 siggma = 0.26 # Matching probability
 betta = 0.96  # Discount factor
 thetta = 1.0    # CRRA parameter
-alfa = 2.2      # Convexity: cost function 
+alfa = 1      # Convexity: cost function 
 A = 1.0         # Scaling: cost function
 qbar = 0.001  # shift: domain for u(q), so we have u(q + qbar)
 
-Inflation = 1.10    # Money supply growth (Home)
-InflationF = 1.03      # Money supply growth (Foreign)
+Inflation = 1.21    # Money supply growth (Home)
+InflationF = 1.20      # Money supply growth (Foreign)
 
 qmin = 0.01
 qmax = 30.0
@@ -289,17 +289,17 @@ ax1.annotate(r"$k(\hat{q},\Pi, \beta, \sigma)$", xy= intercept_x, \
             )
 
 # Label regions/ patches:
-ax1.annotate(r"Case 1 and Case 2", xy = c12, \
+ax1.annotate(r"Case A1", xy = c12, \
              xytext = c12,
             horizontalalignment='left', verticalalignment='top',
             )
 
-ax1.annotate(r"Case 3", xy = c3, \
+ax1.annotate(r"Case A2", xy = c3, \
              xytext = c3,
             horizontalalignment='left', verticalalignment='top',
             )
 
-ax1.annotate(r"Case 4", xy = c4*0.25, \
+ax1.annotate(r"Case A3", xy = c4*0.25, \
              xytext = c4*0.25,
             horizontalalignment='left', verticalalignment='bottom',
             )
@@ -321,7 +321,7 @@ plt.arrow(0, 0, 0, kfmax*1.02, width=0.0005, color="k", \
 #plt.ylabel(r"$\kappa^{f}$", fontsize=ftmed)
 
 xlabel_pos = (kmax*1.05, 0)
-ylabel_pos = (-0.0015,kfmax)
+ylabel_pos = (-0.0015,kfmax*1.05)
 
 ax1.annotate(r"$\kappa$", xy = xlabel_pos, \
              xytext = xlabel_pos,
@@ -329,7 +329,7 @@ ax1.annotate(r"$\kappa$", xy = xlabel_pos, \
             )
 
 
-ax1.annotate(r"$\kappa^{f}$  ", xy = ylabel_pos, \
+ax1.annotate(r"$\kappa^{f}\qquad$     ", xy = ylabel_pos, \
              xytext = ylabel_pos,
             horizontalalignment='right', verticalalignment='bottom',
             )
