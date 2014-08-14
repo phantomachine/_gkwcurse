@@ -11,8 +11,8 @@ Python programs for the paper by P. Gomis-Porqueras, T. Kam and C.J. Waller (201
 
 Inclusions: example figures auto-saved as EPS and PNG files.
 
-* MAIN.PDF: main paper
+* Main paper
 
-* SLIDES.PDF: presentation slides
+* Presentation slides
 
 Usage as is. The author (T. Kam) does not provide any support.
