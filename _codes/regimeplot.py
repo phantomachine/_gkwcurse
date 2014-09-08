@@ -6,6 +6,7 @@ Created on Tue Apr 27 14:18:29 2014
 """
 
 # Import NUMPY and MATPLOTLIB libraries
+import sys
 import polycentroid as centroid
 import numpy as np
 import scipy.optimize as opt
@@ -17,22 +18,57 @@ from mpl_toolkits.axes_grid.axislines import Subplot
 #from matplotlib2tikz import save as tikz_save
 
 # Change filename to suit experiment's name each time!
+#
+# 1. baseline  
+# 2. alpha-hi  ( HI Convexity of DM cost function )
+# 3. Pi-hi     ( HI Home Inflation )
+# 4. PiF-hi    ( HI Foreign Inflation )
+# 5. sigma-hi  ( HI Matching Probability)
+# 6. theta-hi  ( HI CRRA )
+#
+# SET YOUR OPTION BELOW:
 
-filename = 'PiF-hi'
+experiment = 6
 
 # Parameters
 siggma = 0.26 # Matching probability
 betta = 0.96  # Discount factor
-thetta = 1.0    # CRRA parameter
-alfa = 1      # Convexity: cost function 
-A = 1.0         # Scaling: cost function
+thetta = 1.5  # CRRA parameter
+alfa = 1      # Convexity: cost function
+A = 1.2       # Scaling: cost function
 qbar = 0.001  # shift: domain for u(q), so we have u(q + qbar)
 
-Inflation = 1.21    # Money supply growth (Home)
-InflationF = 1.20      # Money supply growth (Foreign)
+Inflation = 1.04    # Money supply growth (Home)
+InflationF = 1.001      # Money supply growth (Foreign)
 
 qmin = 0.01
 qmax = 30.0
+
+if experiment == 1:
+    filename = 'baseline'
+elif experiment == 2:
+    filename = 'alpha-hi'
+    alfa = 2.5
+elif experiment == 3:
+    filename = 'Pi-hi'
+    Inflation = 1.20
+elif experiment == 4:
+    filename = 'PiF-hi'
+    #Inflation = 1.41
+    InflationF = 1.038
+elif experiment == 5:
+    filename = 'sigma-hi'
+    siggma = 0.4
+elif experiment == 6:
+    filename = 'theta-hi'
+    thetta = 4
+else:
+    print "Oops ... Not available option!"
+    sys.exit()
+
+folder = '_figures/'
+filename = folder + filename
+
 
 # Plot font sizes
 ftsmall = 10
@@ -78,8 +114,7 @@ qstar = opt.brentq(excessmargin_firstbest, qmin, qmax, \
                     full_output=True, disp=True)
 
 
-
-# Case 3: 
+# Case 1b: ( Pi > Pif ) and ( lambda^f > lambda = 0 )
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Step 2. Vertices of polygons from Case 3 linear inequalities
 
@@ -114,8 +149,9 @@ path3 = Path(verts3, graph3)
 c3 = centroid.calculate_polygon_centroid(verts3)
 
 
-# Case 4:
+# Case 1c: ( Pi > Pif ) and ( lambda^f > 0, lambda > 0 )
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 origin = (0., 0.)
 
@@ -137,7 +173,8 @@ path4 = Path(verts4, graph4)
 c4 = centroid.calculate_polygon_centroid(verts4)
 
 
-# Case 1 and 2 are obvious
+# Case 1 and 2: ( Pi > Pif ) and ( lambda^f = lambda = 0 )
+#                           ... or (lambda^f = 0 and lambda > 0 )
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 verts12 = [ v3,
             (0., kfmax),
@@ -289,17 +326,17 @@ ax1.annotate(r"$k(\hat{q},\Pi, \beta, \sigma)$", xy= intercept_x, \
             )
 
 # Label regions/ patches:
-ax1.annotate(r"Case A1", xy = c12, \
+ax1.annotate(r"Case 1a", xy = c12, \
              xytext = c12,
             horizontalalignment='left', verticalalignment='top',
             )
 
-ax1.annotate(r"Case A2", xy = c3, \
+ax1.annotate(r"Case 1b", xy = c3, \
              xytext = c3,
             horizontalalignment='left', verticalalignment='top',
             )
 
-ax1.annotate(r"Case A3", xy = c4*0.25, \
+ax1.annotate(r"Case 1c", xy = c4*0.25, \
              xytext = c4*0.25,
             horizontalalignment='left', verticalalignment='bottom',
             )
