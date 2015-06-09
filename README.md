@@ -13,6 +13,4 @@ Inclusions: example figures auto-saved as EPS and PNG files.
 
 * Main paper
 
-* Presentation slides
-
 Usage as is. The author (T. Kam) does not provide any support.
