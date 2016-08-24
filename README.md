@@ -1,4 +1,4 @@
-_gkwcurse
+gkwcurse
 =========
 
 Online Appendix and Python programs for the paper by P. Gomis-Porqueras, T. Kam and C.J. Waller (2016), "Nominal Exchange Rate Determinacy Under the Threat of Currency Counterfeiting"
