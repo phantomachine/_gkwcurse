@@ -5,6 +5,8 @@ Online Appendix and Python programs for the paper by P. Gomis-Porqueras, T. Kam 
 
 * Also available from [St Louis Fed Working Paper 2015-028B](https://research.stlouisfed.org/wp/more/2015-028)
 
+* Cited in the American Economic Association's *JOurnal of Economic Literature* article [*Liquidity*](https://www.aeaweb.org/articles?id=10.1257/jel.20141195&&from=f)
+
 Python Code description
 -----------------------
 
